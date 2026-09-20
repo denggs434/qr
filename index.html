@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SALATAGAN Registration</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f5f4;
+        color: #222;
+      }
+
+      .container {
+        max-width: 1000px;
+        min-height: 100vh;
+        margin: auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* HEADER */
+
+      header {
+        background-color: #2f6f3e;
+        color: white;
+        text-align: center;
+        padding: 55px 20px;
+      }
+
+      header h1 {
+        font-size: 45px;
+        margin-bottom: 10px;
+      }
+
+      header h2 {
+        font-size: 24px;
+        font-weight: normal;
+        margin-bottom: 12px;
+      }
+
+      header p {
+        font-size: 16px;
+        opacity: 0.9;
+      }
+
+      /* MAIN */
+
+      main {
+        flex: 1;
+        padding: 40px 30px;
+      }
+
+      main h2 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .description {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      /* FORM CARDS */
+
+      .forms {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .form-card {
+        display: block;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 25px;
+        text-decoration: none;
+        color: #222;
+        transition: 0.2s ease;
+      }
+
+      .form-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-color: #2f6f3e;
+      }
+
+      .icon {
+        font-size: 38px;
+        margin-bottom: 15px;
+      }
+
+      .form-card h3 {
+        font-size: 21px;
+        margin-bottom: 10px;
+      }
+
+      .form-card p {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      .button {
+        display: inline-block;
+        background-color: #2f6f3e;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      /* FOOTER */
+
+      footer {
+        background-color: #222;
+        color: #ddd;
+        text-align: center;
+        padding: 20px;
+        font-size: 13px;
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 650px) {
+        header {
+          padding: 40px 15px;
+        }
+
+        header h1 {
+          font-size: 36px;
+        }
+
+        header h2 {
+          font-size: 20px;
+        }
+
+        main {
+          padding: 30px 15px;
+        }
+
+        .forms {
+          grid-template-columns: 1fr;
+        }
+
+        main h2 {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+
+      <header>
+        <h1>SALATAGAN</h1>
+
+        <h2>Registration Form</h2>
+
+        <p>Marinduque State University</p>
+      </header>
+
+      <!-- MAIN CONTENT -->
+
+      <main>
+        <h2>Choose Your Category</h2>
+
+        <p class="description">Select the category you want to register for.</p>
+
+        <div class="forms">
+          <!-- SPORTS EVENT -->
+
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfHgoj__kGzUtz_ModFz-Q1va5w8lqntWqWKqbuWD9UYaABLw/viewform?usp=header"
+            target="_blank"
+            class="form-card">
+            <div class="icon">🏆</div>
+
+            <h3>Sports Event</h3>
+
+            <p>Register for SALATAGAN sports events and competitions.</p>
+
+            <span class="button"> Register → </span>
+          </a>
+
+          <!-- VISUAL ARTS -->
+
+          <a
+            href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2FKNAWYySkRTYwmGaU7%3Ffbclid%3DIwcGRvZgFleHRuA2FlbQIxMABicmlkETF5cXVHT1k0YmNtRXV3bktkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhPc7jINsa_HZNOTA6Yvv9r8IQARZcgYdFIhGUIgN7iAoYQ9VDo1RNR9AJG0_aem_jq-xK_moh6EGjPu4Hykw7A&h=AUDr4t8dmZ5bepusvnyjAG8qen5CTD8Rib12NHtAE-eq1USJZx5Dd80YgWbAtmL4X5wBfDtCtKos2YKtpUwmcFBbFQuYPZJGYY0P88LC9UN0YU7XjxSs_T9NOWZ__PAyFWK1Gg"
+            target="_blank"
+            class="form-card">
+            <div class="icon">🎨</div>
+
+            <h3>Visual Arts</h3>
+
+            <p>Register for visual arts competitions and activities.</p>
+
+            <span class="button"> Register → </span>
+          </a>
+
+          <!-- MUSIC -->
+
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSclzD9P6jvF-8Y7E0VeHV2RFzETNCdTWcrDu8Hg3oru-CMb7A/viewform?usp=header"
+            target="_blank"
+            class="form-card">
+            <div class="icon">🎵</div>
+
+            <h3>Music</h3>
+
+            <p>Register for SALATAGAN music events and competitions.</p>
+
+            <span class="button"> Register → </span>
+          </a>
+
+          <!-- DANCE -->
+
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfDp448OzycLaP_fzpHx_SWGX-PlnNHqTB3goijZDiXpkG2sQ/viewform?usp=header"
+            target="_blank"
+            class="form-card">
+            <div class="icon">💃</div>
+
+            <h3>Dance</h3>
+
+            <p>Register for dance performances and competitions.</p>
+
+            <span class="button"> Register → </span>
+          </a>
+
+          <!-- DRAMATIC ART -->
+
+          <a
+            href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2FYS6obKuLJVvVxDDD7%3Ffbclid%3DIwcGRvZgFleHRuA2FlbQIxMABicmlkETF5cXVHT1k0YmNtRXV3bktkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHnU6UmXWADxbcICOdu8rtm5staWx4j0TJj7L0XqvtehaHL2dMykHlUQ_fUVr_aem_1-34TqH3qvGMppbT5uRk3A&h=AUDr4t8dmZ5bepusvnyjAG8qen5CTD8Rib12NHtAE-eq1USJZx5Dd80YgWbAtmL4X5wBfDtCtKos2YKtpUwmcFBbFQuYPZJGYY0P88LC9UN0YU7XjxSs_T9NOWZ__PAyFWK1Gg"
+            target="_blank"
+            class="form-card">
+            <div class="icon">🎭</div>
+
+            <h3>Dramatic Art</h3>
+
+            <p>Register for dramatic arts, theater, and stage performances.</p>
+
+            <span class="button"> Register → </span>
+          </a>
+
+          <!-- LITERARY ART -->
+
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdGaLRMHiwWf5KBuE6wlj9lcuKDNipRroan4tbgyRTA4LXhjg/viewform?usp=header"
+            target="_blank"
+            class="form-card">
+            <div class="icon">📖</div>
+
+            <h3>Literary Art</h3>
+
+            <p>
+              Register for literary arts, writing, and related competitions.
+            </p>
+
+            <span class="button"> Register → </span>
+          </a>
+        </div>
+      </main>
+
+      <!-- FOOTER -->
+
+      <footer>
+        <p>© 2026 CICSSO</p>
+
+        <p>College of Information and Computing Sciences</p>
+      </footer>
+    </div>
+  </body>
+</html>
