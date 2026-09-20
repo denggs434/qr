@@ -3,288 +3,1178 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Official SALATAGAN 2026 registration portal for sports, visual arts, music, dance, dramatic art, and literary art."
+    />
+    <meta name="theme-color" content="#12372a" />
 
-    <title>SALATAGAN Registration</title>
+    <title>SALATAGAN 2026 — Registration Portal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
 
     <style>
-      * {
-        margin: 0;
-        padding: 0;
+      :root {
+        color-scheme: light;
+        --ink: #15231d;
+        --ink-soft: #526159;
+        --forest: #12372a;
+        --forest-light: #1f5a44;
+        --paper: #f4f1e8;
+        --surface: #fbfaf6;
+        --line: #d8d8ce;
+        --accent: #e3b341;
+        --white: #ffffff;
+        --shadow: 0 22px 55px rgba(18, 55, 42, 0.09);
+        --radius-sm: 14px;
+        --radius-lg: 28px;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --page-padding: clamp(20px, 4vw, 56px);
+        --content-width: 1200px;
+      }
+
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f3f5f4;
-        color: #222;
-      }
-
-      .container {
-        max-width: 1000px;
-        min-height: 100vh;
-        margin: auto;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* HEADER */
-
-      header {
-        background-color: #2f6f3e;
-        color: white;
-        text-align: center;
-        padding: 55px 20px;
-      }
-
-      header h1 {
-        font-size: 45px;
-        margin-bottom: 10px;
-      }
-
-      header h2 {
-        font-size: 24px;
-        font-weight: normal;
-        margin-bottom: 12px;
-      }
-
-      header p {
+        min-width: 320px;
+        min-height: 100dvh;
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Poppins", sans-serif;
         font-size: 16px;
-        opacity: 0.9;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
 
-      /* MAIN */
-
-      main {
-        flex: 1;
-        padding: 40px 30px;
+      body::before {
+        position: fixed;
+        z-index: -1;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(18, 55, 42, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(18, 55, 42, 0.035) 1px, transparent 1px);
+        background-size: 64px 64px;
+        content: "";
+        pointer-events: none;
+        mask-image: linear-gradient(to bottom, black, transparent 82%);
       }
 
-      main h2 {
-        text-align: center;
-        font-size: 28px;
-        margin-bottom: 10px;
+      a {
+        color: inherit;
       }
 
-      .description {
-        text-align: center;
-        color: #666;
-        margin-bottom: 30px;
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
       }
 
-      /* FORM CARDS */
+      svg {
+        display: block;
+      }
 
-      .forms {
+      ::selection {
+        background: var(--accent);
+        color: var(--forest);
+      }
+
+      .skip-link {
+        position: fixed;
+        z-index: 100;
+        top: 12px;
+        left: 12px;
+        padding: 12px 16px;
+        transform: translateY(-160%);
+        border-radius: 8px;
+        background: var(--white);
+        color: var(--forest);
+        font-weight: 600;
+        transition: transform 180ms ease;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .site-shell {
+        width: min(100%, calc(var(--content-width) + (var(--page-padding) * 2)));
+        margin-inline: auto;
+        padding-inline: var(--page-padding);
+      }
+
+      .site-header {
+        position: relative;
+        z-index: 10;
+        border-bottom: 1px solid rgba(18, 55, 42, 0.14);
+      }
+
+      .nav {
+        display: flex;
+        min-height: 88px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand-mark {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        width: 42px;
+        height: 42px;
+        flex: 0 0 auto;
+        place-items: center;
+        border: 1px solid var(--forest);
+        border-radius: 50%;
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .brand-copy {
+        display: grid;
+        line-height: 1.2;
+      }
+
+      .brand-copy strong {
+        font-size: 14px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .brand-copy small {
+        margin-top: 4px;
+        color: var(--ink-soft);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+      }
+
+      .nav-link {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid transparent;
+        color: var(--forest);
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition:
+          border-color 200ms ease,
+          color 200ms ease;
+      }
+
+      .nav-link svg {
+        width: 18px;
+        height: 18px;
+        transition: transform 250ms var(--ease);
+      }
+
+      .nav-link:hover {
+        border-color: var(--forest);
+        color: var(--forest-light);
+      }
+
+      .nav-link:hover svg {
+        transform: translateY(2px);
+      }
+
+      .hero {
+        display: grid;
+        min-height: min(720px, calc(100dvh - 89px));
+        grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+        align-items: center;
+        gap: clamp(56px, 8vw, 120px);
+        padding-block: clamp(64px, 9vw, 116px);
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 24px;
+        color: var(--forest-light);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 28px;
+        height: 2px;
+        background: var(--accent);
+        content: "";
+      }
+
+      .hero h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(3.25rem, 7.2vw, 6.8rem);
+        font-weight: 600;
+        letter-spacing: -0.065em;
+        line-height: 0.94;
+      }
+
+      .hero h1 span {
+        color: var(--forest-light);
+      }
+
+      .hero-intro {
+        max-width: 620px;
+        margin: 30px 0 0;
+        color: var(--ink-soft);
+        font-size: clamp(1rem, 1.5vw, 1.125rem);
+        line-height: 1.75;
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        margin-top: 36px;
+      }
+
+      .primary-button {
+        display: inline-flex;
+        min-height: 52px;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 0 22px;
+        border: 1px solid var(--forest);
+        border-radius: 999px;
+        background: var(--forest);
+        color: var(--white);
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition:
+          background-color 200ms ease,
+          color 200ms ease,
+          transform 220ms var(--ease),
+          box-shadow 220ms ease;
+      }
+
+      .primary-button svg {
+        width: 18px;
+        height: 18px;
+        transition: transform 220ms var(--ease);
+      }
+
+      .primary-button:hover {
+        background: var(--forest-light);
+        box-shadow: 0 12px 26px rgba(18, 55, 42, 0.16);
+        transform: translateY(-2px);
+      }
+
+      .primary-button:hover svg {
+        transform: translateY(2px);
+      }
+
+      .event-poster-wrap {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .event-poster-wrap::before {
+        position: absolute;
+        width: 82%;
+        aspect-ratio: 1;
+        border: 1px solid rgba(18, 55, 42, 0.18);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .event-poster {
+        position: relative;
+        width: min(100%, 420px);
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        padding: clamp(28px, 4vw, 44px);
+        border-radius: var(--radius-lg);
+        background: var(--forest);
+        box-shadow: var(--shadow);
+        color: var(--white);
+        transform: rotate(2.5deg);
+        transition: transform 500ms var(--ease);
+      }
+
+      .event-poster:hover {
+        transform: rotate(0deg) translateY(-5px);
+      }
+
+      .event-poster::before {
+        position: absolute;
+        top: -22%;
+        right: -40%;
+        width: 106%;
+        aspect-ratio: 1;
+        border: clamp(38px, 6vw, 68px) solid var(--accent);
+        border-radius: 50%;
+        content: "";
+        opacity: 0.95;
+      }
+
+      .poster-top,
+      .poster-bottom {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .poster-top span:last-child,
+      .poster-bottom span:last-child {
+        text-align: right;
+      }
+
+      .poster-letter {
+        position: absolute;
+        z-index: 1;
+        top: 43%;
+        left: 8%;
+        margin: 0;
+        font-size: clamp(10rem, 22vw, 16rem);
+        font-weight: 600;
+        letter-spacing: -0.12em;
+        line-height: 0.72;
+        transform: translateY(-50%);
+      }
+
+      .poster-bottom {
+        position: absolute;
+        right: clamp(28px, 4vw, 44px);
+        bottom: clamp(28px, 4vw, 44px);
+        left: clamp(28px, 4vw, 44px);
+        align-items: flex-end;
+      }
+
+      .poster-bottom strong {
+        max-width: 180px;
+        font-size: clamp(17px, 2vw, 22px);
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        text-transform: none;
+      }
+
+      .poster-bottom span {
+        writing-mode: vertical-rl;
+      }
+
+      .categories-section {
+        position: relative;
+        padding-block: clamp(80px, 10vw, 140px);
+        border-top: 1px solid var(--line);
+      }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.45fr);
+        justify-content: space-between;
+        gap: 40px;
+        align-items: end;
+        margin-bottom: clamp(44px, 6vw, 72px);
+      }
+
+      .section-heading h2 {
+        max-width: 720px;
+        margin: 0;
+        font-size: clamp(2.25rem, 5vw, 4.5rem);
+        font-weight: 600;
+        letter-spacing: -0.055em;
+        line-height: 1;
+      }
+
+      .section-heading-copy {
+        margin: 0 0 4px;
+        color: var(--ink-soft);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+      }
+
+      .category-card {
+        --spot-x: 50%;
+        --spot-y: 50%;
+        position: relative;
+        min-height: 360px;
+        overflow: hidden;
+        padding: clamp(24px, 3vw, 34px);
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 250, 246, 0.56);
+        color: var(--ink);
+        text-decoration: none;
+        transition:
+          background-color 240ms ease,
+          color 240ms ease,
+          box-shadow 300ms ease;
+      }
+
+      .category-card::before {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle 240px at var(--spot-x) var(--spot-y),
+          rgba(227, 179, 65, 0.2),
+          transparent 70%
+        );
+        content: "";
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 280ms ease;
+      }
+
+      .category-card::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        background: var(--accent);
+        content: "";
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 320ms var(--ease);
+      }
+
+      .category-card:hover {
+        z-index: 2;
+        background: var(--forest);
+        box-shadow: 0 24px 55px rgba(18, 55, 42, 0.14);
+        color: var(--white);
+      }
+
+      .category-card:hover::before,
+      .category-card:hover::after {
+        opacity: 1;
+      }
+
+      .category-card:hover::after {
+        transform: scaleX(1);
+      }
+
+      .card-top {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
         gap: 20px;
       }
 
-      .form-card {
-        display: block;
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 25px;
-        text-decoration: none;
-        color: #222;
-        transition: 0.2s ease;
+      .category-icon {
+        display: grid;
+        width: 54px;
+        height: 54px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: var(--surface);
+        color: var(--forest);
+        transition:
+          background-color 240ms ease,
+          border-color 240ms ease,
+          transform 320ms var(--ease);
       }
 
-      .form-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        border-color: #2f6f3e;
+      .category-icon svg {
+        width: 24px;
+        height: 24px;
       }
 
-      .icon {
-        font-size: 38px;
-        margin-bottom: 15px;
+      .card-number {
+        color: var(--ink-soft);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        transition: color 240ms ease;
       }
 
-      .form-card h3 {
-        font-size: 21px;
-        margin-bottom: 10px;
+      .card-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        height: calc(100% - 74px);
+        flex-direction: column;
+        justify-content: flex-end;
       }
 
-      .form-card p {
-        color: #666;
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 20px;
+      .category-card h3 {
+        margin: 0;
+        font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+        font-weight: 600;
+        letter-spacing: -0.04em;
       }
 
-      .button {
-        display: inline-block;
-        background-color: #2f6f3e;
-        color: white;
-        padding: 10px 18px;
-        border-radius: 7px;
-        font-size: 14px;
-        font-weight: bold;
-      }
-
-      /* FOOTER */
-
-      footer {
-        background-color: #222;
-        color: #ddd;
-        text-align: center;
-        padding: 20px;
+      .category-card p {
+        max-width: 31ch;
+        margin: 12px 0 24px;
+        color: var(--ink-soft);
         font-size: 13px;
+        line-height: 1.7;
+        transition: color 240ms ease;
       }
 
-      /* MOBILE */
+      .card-action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        transition: border-color 240ms ease;
+      }
 
-      @media (max-width: 650px) {
-        header {
-          padding: 40px 15px;
+      .card-action svg {
+        width: 18px;
+        height: 18px;
+        transition: transform 280ms var(--ease);
+      }
+
+      .category-card:hover .category-icon {
+        border-color: var(--accent);
+        background: var(--accent);
+        transform: rotate(-5deg) scale(1.04);
+      }
+
+      .category-card:hover .card-number,
+      .category-card:hover p {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .category-card:hover .card-action {
+        border-color: rgba(255, 255, 255, 0.22);
+      }
+
+      .category-card:hover .card-action svg {
+        transform: translate(3px, -3px);
+      }
+
+      .registration-note {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-top: 28px;
+        color: var(--ink-soft);
+        font-size: 12px;
+      }
+
+      .registration-note svg {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+        margin-top: 1px;
+        color: var(--forest-light);
+      }
+
+      .site-footer {
+        padding-block: 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        background: var(--forest);
+        color: var(--white);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .footer-org {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .footer-mark {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        flex: 0 0 auto;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        border-radius: 50%;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .footer-org p,
+      .footer-meta {
+        margin: 0;
+      }
+
+      .footer-org strong {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .footer-org span,
+      .footer-meta {
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 11px;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .js .intro-item,
+      .js .reveal-item {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      .js body.is-ready .intro-item {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 700ms var(--ease),
+          transform 700ms var(--ease);
+        transition-delay: var(--intro-delay, 0ms);
+      }
+
+      .js .reveal-item.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 620ms var(--ease),
+          transform 620ms var(--ease);
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+
+      @media (max-width: 960px) {
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr 0.72fr;
+          gap: 48px;
         }
 
-        header h1 {
-          font-size: 36px;
+        .hero h1 {
+          font-size: clamp(3.4rem, 8vw, 5.4rem);
         }
 
-        header h2 {
-          font-size: 20px;
+        .event-poster {
+          min-height: 430px;
         }
 
-        main {
-          padding: 30px 15px;
+        .category-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        :root {
+          --page-padding: 20px;
         }
 
-        .forms {
+        .nav {
+          min-height: 76px;
+        }
+
+        .nav-link span {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+
+        .nav-link {
+          width: 48px;
+          justify-content: center;
+          border: 1px solid var(--line);
+          border-radius: 50%;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 52px;
+          padding-block: 64px 80px;
+        }
+
+        .hero-copy {
+          max-width: 620px;
+        }
+
+        .hero h1 {
+          font-size: clamp(2.5rem, 12vw, 4rem);
+        }
+
+        .hero-intro {
+          margin-top: 24px;
+        }
+
+        .event-poster-wrap {
+          width: min(100%, 430px);
+          margin-inline: auto;
+        }
+
+        .event-poster {
+          min-height: 0;
+        }
+
+        .event-poster-wrap::before {
+          width: 74%;
+        }
+
+        .section-heading {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .section-heading-copy {
+          max-width: 46ch;
+        }
+
+        .category-card {
+          min-height: 340px;
+        }
+
+        .footer-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 540px) {
+        body::before {
+          background-size: 44px 44px;
+        }
+
+        .brand-copy small {
+          display: none;
+        }
+
+        .hero-actions {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 18px;
+        }
+
+        .primary-button {
+          width: 100%;
+        }
+
+        .category-grid {
           grid-template-columns: 1fr;
         }
 
-        main h2 {
-          font-size: 24px;
+        .category-card {
+          min-height: 320px;
+        }
+
+        .poster-letter {
+          font-size: clamp(9rem, 54vw, 13rem);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+
+        .js .intro-item,
+        .js .reveal-item {
+          opacity: 1;
+          transform: none;
+        }
+
+        .event-poster {
+          transform: none;
         }
       }
     </style>
   </head>
 
-  <body>
-    <div class="container">
-      <!-- HEADER -->
+  <body id="top">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-      <header>
-        <h1>SALATAGAN</h1>
+    <header class="site-header intro-item" style="--intro-delay: 40ms">
+      <div class="site-shell nav">
+        <a class="brand" href="#top" aria-label="SALATAGAN registration home">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span class="brand-copy">
+            <strong>Salatagan</strong>
+            <small>Registration portal · 2026</small>
+          </span>
+        </a>
 
-        <h2>Registration Form</h2>
+        <a class="nav-link" href="#categories">
+          <span>View categories</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M19 12l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
+    </header>
 
-        <p>Marinduque State University</p>
-      </header>
-
-      <!-- MAIN CONTENT -->
-
-      <main>
-        <h2>Choose Your Category</h2>
-
-        <p class="description">Select the category you want to register for.</p>
-
-        <div class="forms">
-          <!-- SPORTS EVENT -->
-
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfHgoj__kGzUtz_ModFz-Q1va5w8lqntWqWKqbuWD9UYaABLw/viewform?usp=header"
-            target="_blank"
-            class="form-card">
-            <div class="icon">🏆</div>
-
-            <h3>Sports Event</h3>
-
-            <p>Register for SALATAGAN sports events and competitions.</p>
-
-            <span class="button"> Register → </span>
-          </a>
-
-          <!-- VISUAL ARTS -->
-
-          <a
-            href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2FKNAWYySkRTYwmGaU7%3Ffbclid%3DIwcGRvZgFleHRuA2FlbQIxMABicmlkETF5cXVHT1k0YmNtRXV3bktkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhPc7jINsa_HZNOTA6Yvv9r8IQARZcgYdFIhGUIgN7iAoYQ9VDo1RNR9AJG0_aem_jq-xK_moh6EGjPu4Hykw7A&h=AUDr4t8dmZ5bepusvnyjAG8qen5CTD8Rib12NHtAE-eq1USJZx5Dd80YgWbAtmL4X5wBfDtCtKos2YKtpUwmcFBbFQuYPZJGYY0P88LC9UN0YU7XjxSs_T9NOWZ__PAyFWK1Gg"
-            target="_blank"
-            class="form-card">
-            <div class="icon">🎨</div>
-
-            <h3>Visual Arts</h3>
-
-            <p>Register for visual arts competitions and activities.</p>
-
-            <span class="button"> Register → </span>
-          </a>
-
-          <!-- MUSIC -->
-
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSclzD9P6jvF-8Y7E0VeHV2RFzETNCdTWcrDu8Hg3oru-CMb7A/viewform?usp=header"
-            target="_blank"
-            class="form-card">
-            <div class="icon">🎵</div>
-
-            <h3>Music</h3>
-
-            <p>Register for SALATAGAN music events and competitions.</p>
-
-            <span class="button"> Register → </span>
-          </a>
-
-          <!-- DANCE -->
-
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfDp448OzycLaP_fzpHx_SWGX-PlnNHqTB3goijZDiXpkG2sQ/viewform?usp=header"
-            target="_blank"
-            class="form-card">
-            <div class="icon">💃</div>
-
-            <h3>Dance</h3>
-
-            <p>Register for dance performances and competitions.</p>
-
-            <span class="button"> Register → </span>
-          </a>
-
-          <!-- DRAMATIC ART -->
-
-          <a
-            href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2FYS6obKuLJVvVxDDD7%3Ffbclid%3DIwcGRvZgFleHRuA2FlbQIxMABicmlkETF5cXVHT1k0YmNtRXV3bktkc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHnU6UmXWADxbcICOdu8rtm5staWx4j0TJj7L0XqvtehaHL2dMykHlUQ_fUVr_aem_1-34TqH3qvGMppbT5uRk3A&h=AUDr4t8dmZ5bepusvnyjAG8qen5CTD8Rib12NHtAE-eq1USJZx5Dd80YgWbAtmL4X5wBfDtCtKos2YKtpUwmcFBbFQuYPZJGYY0P88LC9UN0YU7XjxSs_T9NOWZ__PAyFWK1Gg"
-            target="_blank"
-            class="form-card">
-            <div class="icon">🎭</div>
-
-            <h3>Dramatic Art</h3>
-
-            <p>Register for dramatic arts, theater, and stage performances.</p>
-
-            <span class="button"> Register → </span>
-          </a>
-
-          <!-- LITERARY ART -->
-
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdGaLRMHiwWf5KBuE6wlj9lcuKDNipRroan4tbgyRTA4LXhjg/viewform?usp=header"
-            target="_blank"
-            class="form-card">
-            <div class="icon">📖</div>
-
-            <h3>Literary Art</h3>
-
-            <p>
-              Register for literary arts, writing, and related competitions.
-            </p>
-
-            <span class="button"> Register → </span>
-          </a>
+    <main id="main-content">
+      <section class="site-shell hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow intro-item" style="--intro-delay: 120ms">Marinduque State University</p>
+          <h1 id="hero-title" class="intro-item" style="--intro-delay: 180ms">
+            Find your field.<br /><span>Take your place.</span>
+          </h1>
+          <p class="hero-intro intro-item" style="--intro-delay: 260ms">
+            Your direct route to SALATAGAN registration. Choose a category below and continue to its official form.
+          </p>
+          <div class="hero-actions intro-item" style="--intro-delay: 340ms">
+            <a class="primary-button" href="#categories">
+              Explore categories
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+              </svg>
+            </a>
+          </div>
         </div>
-      </main>
 
-      <!-- FOOTER -->
+        <div class="event-poster-wrap intro-item" style="--intro-delay: 260ms" aria-hidden="true">
+          <div class="event-poster">
+            <div class="poster-top">
+              <span>MarSU · CICSSO</span>
+              <span>Registration<br />Portal</span>
+            </div>
+            <p class="poster-letter">S</p>
+            <div class="poster-bottom">
+              <strong>Sport, culture &amp; creative expression</strong>
+              <span>Twenty twenty-six</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <footer>
-        <p>© 2026 CICSSO</p>
+      <section id="categories" class="categories-section" aria-labelledby="categories-title">
+        <div class="site-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow reveal-item">Registration categories</p>
+              <h2 id="categories-title" class="reveal-item" style="--reveal-delay: 60ms">Choose where you belong.</h2>
+            </div>
+            <p class="section-heading-copy reveal-item" style="--reveal-delay: 100ms">
+              Six disciplines, one university celebration. Select your category to continue to the corresponding registration form.
+            </p>
+          </div>
 
-        <p>College of Information and Computing Sciences</p>
-      </footer>
-    </div>
+          <div class="category-grid">
+            <a
+              class="category-card reveal-item"
+              style="--reveal-delay: 0ms"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfHgoj__kGzUtz_ModFz-Q1va5w8lqntWqWKqbuWD9UYaABLw/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Register for Sports Event, opens in a new tab"
+            >
+              <div class="card-top">
+                <span class="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z" />
+                    <path d="M7 5H4v2a4 4 0 0 0 4 4M17 5h3v2a4 4 0 0 1-4 4" />
+                  </svg>
+                </span>
+                <span class="card-number">01 / 06</span>
+              </div>
+              <div class="card-content">
+                <h3>Sports Event</h3>
+                <p>Compete, represent, and register for SALATAGAN athletic events.</p>
+                <span class="card-action">
+                  Open registration
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7M7 7h10v10" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+
+            <a
+              class="category-card reveal-item"
+              style="--reveal-delay: 45ms"
+              href="https://forms.gle/KNAWYySkRTYwmGaU7"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Register for Visual Arts, opens in a new tab"
+            >
+              <div class="card-top">
+                <span class="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22a10 10 0 1 1 10-10c0 2-1 3-3 3h-1.8a2 2 0 0 0-1.7 3l.2.3A2.4 2.4 0 0 1 13.6 22H12Z" />
+                    <circle cx="7.5" cy="10.5" r=".8" fill="currentColor" stroke="none" />
+                    <circle cx="10" cy="6.8" r=".8" fill="currentColor" stroke="none" />
+                    <circle cx="15" cy="7.2" r=".8" fill="currentColor" stroke="none" />
+                  </svg>
+                </span>
+                <span class="card-number">02 / 06</span>
+              </div>
+              <div class="card-content">
+                <h3>Visual Arts</h3>
+                <p>Create, exhibit, and register for visual arts competitions and activities.</p>
+                <span class="card-action">
+                  Open registration
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7M7 7h10v10" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+
+            <a
+              class="category-card reveal-item"
+              style="--reveal-delay: 90ms"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSclzD9P6jvF-8Y7E0VeHV2RFzETNCdTWcrDu8Hg3oru-CMb7A/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Register for Music, opens in a new tab"
+            >
+              <div class="card-top">
+                <span class="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18V5l11-2v13" />
+                    <circle cx="6" cy="18" r="3" />
+                    <circle cx="17" cy="16" r="3" />
+                  </svg>
+                </span>
+                <span class="card-number">03 / 06</span>
+              </div>
+              <div class="card-content">
+                <h3>Music</h3>
+                <p>Perform, collaborate, and register for music events and competitions.</p>
+                <span class="card-action">
+                  Open registration
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7M7 7h10v10" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+
+            <a
+              class="category-card reveal-item"
+              style="--reveal-delay: 0ms"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfDp448OzycLaP_fzpHx_SWGX-PlnNHqTB3goijZDiXpkG2sQ/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Register for Dance, opens in a new tab"
+            >
+              <div class="card-top">
+                <span class="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="14" cy="4" r="2" />
+                    <path d="m12 8-3 4 4 2 2 6M12 8l4 3 3-2M13 14l-5 6M5 7c1.3-1 2.7-1.3 4-1" />
+                  </svg>
+                </span>
+                <span class="card-number">04 / 06</span>
+              </div>
+              <div class="card-content">
+                <h3>Dance</h3>
+                <p>Move, perform, and register for dance showcases and competitions.</p>
+                <span class="card-action">
+                  Open registration
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7M7 7h10v10" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+
+            <a
+              class="category-card reveal-item"
+              style="--reveal-delay: 45ms"
+              href="https://forms.gle/YS6obKuLJVvVxDDD7"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Register for Dramatic Art, opens in a new tab"
+            >
+              <div class="card-top">
+                <span class="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 5c5-2 11-2 16 0v7c0 5-3.6 8-8 8s-8-3-8-8V5Z" />
+                    <path d="M7.5 9h.01M16.5 9h.01M8 14c2.6 2 5.4 2 8 0" />
+                  </svg>
+                </span>
+                <span class="card-number">05 / 06</span>
+              </div>
+              <div class="card-content">
+                <h3>Dramatic Art</h3>
+                <p>Take the stage and register for theater and dramatic performances.</p>
+                <span class="card-action">
+                  Open registration
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7M7 7h10v10" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+
+            <a
+              class="category-card reveal-item"
+              style="--reveal-delay: 90ms"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdGaLRMHiwWf5KBuE6wlj9lcuKDNipRroan4tbgyRTA4LXhjg/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Register for Literary Art, opens in a new tab"
+            >
+              <div class="card-top">
+                <span class="category-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 5.5A3.5 3.5 0 0 1 5.5 2H11v17H5.5A3.5 3.5 0 0 0 2 22V5.5ZM22 5.5A3.5 3.5 0 0 0 18.5 2H13v17h5.5A3.5 3.5 0 0 1 22 22V5.5Z" />
+                  </svg>
+                </span>
+                <span class="card-number">06 / 06</span>
+              </div>
+              <div class="card-content">
+                <h3>Literary Art</h3>
+                <p>Write, speak, and register for literary arts and related competitions.</p>
+                <span class="card-action">
+                  Open registration
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7M7 7h10v10" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <p class="registration-note reveal-item">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 11v5M12 8h.01" />
+            </svg>
+            Registration is completed through separate Google Forms. Review the requirements shown on your selected form before submitting.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-shell footer-inner">
+        <div class="footer-org">
+          <span class="footer-mark" aria-hidden="true">C</span>
+          <p>
+            <strong>CICSSO</strong>
+            <span>College of Information and Computing Sciences</span>
+          </p>
+        </div>
+        <p class="footer-meta">SALATAGAN Registration · 2026</p>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        const revealPage = () => {
+          requestAnimationFrame(() => document.body.classList.add("is-ready"));
+        };
+
+        const revealItems = document.querySelectorAll(".reveal-item");
+
+        if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+          revealItems.forEach((item) => item.classList.add("is-visible"));
+        } else {
+          const observer = new IntersectionObserver(
+            (entries, currentObserver) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("is-visible");
+                currentObserver.unobserve(entry.target);
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -36px" },
+          );
+
+          revealItems.forEach((item) => observer.observe(item));
+        }
+
+        const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+        if (finePointer.matches && !reduceMotion.matches) {
+          document.querySelectorAll(".category-card").forEach((card) => {
+            card.addEventListener("pointermove", (event) => {
+              const bounds = card.getBoundingClientRect();
+              const x = event.clientX - bounds.left;
+              const y = event.clientY - bounds.top;
+              card.style.setProperty("--spot-x", `${x}px`);
+              card.style.setProperty("--spot-y", `${y}px`);
+            });
+          });
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", revealPage, { once: true });
+        } else {
+          revealPage();
+        }
+      })();
+    </script>
   </body>
 </html>
