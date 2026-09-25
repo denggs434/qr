@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Official SALATAGAN 2026 registration portal for sports, visual arts, music, dance, dramatic art, and literary art."
+      content="Official SALATAGAN 2026 registration portal for sports, visual arts, music, dance, dramatic art, literary art, and esports."
     />
     <meta name="theme-color" content="#12372a" />
 
@@ -594,6 +594,238 @@
         transform: translate(3px, -3px);
       }
 
+      .esports-card {
+        position: relative;
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        gap: clamp(32px, 5vw, 64px);
+        overflow: hidden;
+        padding: clamp(28px, 4vw, 48px);
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--forest);
+        color: var(--white);
+      }
+
+      .esports-card::before {
+        position: absolute;
+        top: -55%;
+        left: -18%;
+        width: 52%;
+        aspect-ratio: 1;
+        border: clamp(34px, 5vw, 60px) solid var(--accent);
+        border-radius: 50%;
+        content: "";
+        opacity: 0.12;
+        pointer-events: none;
+      }
+
+      .esports-card::after {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 32px 32px;
+        content: "";
+        pointer-events: none;
+        mask-image: linear-gradient(90deg, black, transparent 70%);
+      }
+
+      .esports-intro {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .esports-intro .category-icon {
+        border-color: var(--accent);
+        background: var(--accent);
+      }
+
+      .esports-intro .card-number {
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .esports-badge {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 8px;
+        margin-top: clamp(40px, 6vw, 72px);
+        padding: 6px 12px;
+        border: 1px solid rgba(227, 179, 65, 0.5);
+        border-radius: 999px;
+        color: var(--accent);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .esports-badge::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        content: "";
+        animation: live-pulse 1.8s ease-out infinite;
+      }
+
+      @keyframes live-pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(227, 179, 65, 0.6);
+        }
+        70%,
+        100% {
+          box-shadow: 0 0 0 8px rgba(227, 179, 65, 0);
+        }
+      }
+
+      .esports-intro h3 {
+        margin: 18px 0 0;
+        font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+        font-weight: 600;
+        letter-spacing: -0.055em;
+        line-height: 1;
+      }
+
+      .esports-intro p {
+        max-width: 38ch;
+        margin: 16px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .esports-games {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .game-tile {
+        --spot-x: 50%;
+        --spot-y: 50%;
+        position: relative;
+        display: flex;
+        min-height: 300px;
+        flex-direction: column;
+        overflow: hidden;
+        padding: clamp(22px, 2.6vw, 30px);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: var(--radius-sm);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--white);
+        text-decoration: none;
+        transition:
+          background-color 260ms ease,
+          border-color 260ms ease,
+          color 260ms ease,
+          transform 320ms var(--ease),
+          box-shadow 320ms ease;
+      }
+
+      .game-tile::before {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle 200px at var(--spot-x) var(--spot-y),
+          rgba(255, 255, 255, 0.35),
+          transparent 70%
+        );
+        content: "";
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 280ms ease;
+      }
+
+      .game-monogram {
+        position: absolute;
+        right: -6px;
+        bottom: 40px;
+        font-size: clamp(5.5rem, 9vw, 8rem);
+        font-weight: 700;
+        letter-spacing: -0.08em;
+        line-height: 0.8;
+        opacity: 0.08;
+        pointer-events: none;
+        transition:
+          opacity 260ms ease,
+          transform 420ms var(--ease);
+      }
+
+      .game-meta {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        transition: color 260ms ease;
+      }
+
+      .game-tile h4 {
+        position: relative;
+        margin: auto 0 0;
+        padding-top: 48px;
+        font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+      }
+
+      .game-form {
+        position: relative;
+        margin: 8px 0 20px;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 12px;
+        line-height: 1.6;
+        transition: color 260ms ease;
+      }
+
+      .game-tile .card-action {
+        position: relative;
+        border-color: rgba(255, 255, 255, 0.16);
+      }
+
+      .game-tile:hover {
+        border-color: var(--accent);
+        background: var(--accent);
+        box-shadow: 0 20px 44px rgba(0, 0, 0, 0.25);
+        color: var(--forest);
+        transform: translateY(-4px);
+      }
+
+      .game-tile:hover::before {
+        opacity: 1;
+      }
+
+      .game-tile:hover .game-monogram {
+        opacity: 0.16;
+        transform: translateX(-6px);
+      }
+
+      .game-tile:hover .game-meta,
+      .game-tile:hover .game-form {
+        color: rgba(18, 55, 42, 0.78);
+      }
+
+      .game-tile:hover .card-action {
+        border-color: rgba(18, 55, 42, 0.24);
+      }
+
+      .game-tile:hover .card-action svg {
+        transform: translate(3px, -3px);
+      }
+
       .registration-note {
         display: flex;
         align-items: flex-start;
@@ -719,6 +951,14 @@
         .category-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
+        .esports-card {
+          grid-template-columns: 1fr;
+        }
+
+        .esports-badge {
+          margin-top: 36px;
+        }
       }
 
       @media (max-width: 720px) {
@@ -825,6 +1065,14 @@
           min-height: 320px;
         }
 
+        .esports-games {
+          grid-template-columns: 1fr;
+        }
+
+        .game-tile {
+          min-height: 250px;
+        }
+
         .poster-letter {
           font-size: clamp(9rem, 54vw, 13rem);
         }
@@ -922,7 +1170,7 @@
               <h2 id="categories-title" class="reveal-item" style="--reveal-delay: 60ms">Choose where you belong.</h2>
             </div>
             <p class="section-heading-copy reveal-item" style="--reveal-delay: 100ms">
-              Six disciplines, one university celebration. Select your category to continue to the corresponding registration form.
+              Seven disciplines, one university celebration. Select your category to continue to the corresponding registration form.
             </p>
           </div>
 
@@ -942,7 +1190,7 @@
                     <path d="M7 5H4v2a4 4 0 0 0 4 4M17 5h3v2a4 4 0 0 1-4 4" />
                   </svg>
                 </span>
-                <span class="card-number">01 / 06</span>
+                <span class="card-number">01 / 07</span>
               </div>
               <div class="card-content">
                 <h3>Sports Event</h3>
@@ -973,7 +1221,7 @@
                     <circle cx="15" cy="7.2" r=".8" fill="currentColor" stroke="none" />
                   </svg>
                 </span>
-                <span class="card-number">02 / 06</span>
+                <span class="card-number">02 / 07</span>
               </div>
               <div class="card-content">
                 <h3>Visual Arts</h3>
@@ -1003,7 +1251,7 @@
                     <circle cx="17" cy="16" r="3" />
                   </svg>
                 </span>
-                <span class="card-number">03 / 06</span>
+                <span class="card-number">03 / 07</span>
               </div>
               <div class="card-content">
                 <h3>Music</h3>
@@ -1032,7 +1280,7 @@
                     <path d="m12 8-3 4 4 2 2 6M12 8l4 3 3-2M13 14l-5 6M5 7c1.3-1 2.7-1.3 4-1" />
                   </svg>
                 </span>
-                <span class="card-number">04 / 06</span>
+                <span class="card-number">04 / 07</span>
               </div>
               <div class="card-content">
                 <h3>Dance</h3>
@@ -1061,7 +1309,7 @@
                     <path d="M7.5 9h.01M16.5 9h.01M8 14c2.6 2 5.4 2 8 0" />
                   </svg>
                 </span>
-                <span class="card-number">05 / 06</span>
+                <span class="card-number">05 / 07</span>
               </div>
               <div class="card-content">
                 <h3>Dramatic Art</h3>
@@ -1089,7 +1337,7 @@
                     <path d="M2 5.5A3.5 3.5 0 0 1 5.5 2H11v17H5.5A3.5 3.5 0 0 0 2 22V5.5ZM22 5.5A3.5 3.5 0 0 0 18.5 2H13v17h5.5A3.5 3.5 0 0 1 22 22V5.5Z" />
                   </svg>
                 </span>
-                <span class="card-number">06 / 06</span>
+                <span class="card-number">06 / 07</span>
               </div>
               <div class="card-content">
                 <h3>Literary Art</h3>
@@ -1102,6 +1350,69 @@
                 </span>
               </div>
             </a>
+
+            <div class="esports-card reveal-item" role="group" aria-labelledby="esports-title">
+              <div class="esports-intro">
+                <div class="card-top">
+                  <span class="category-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 11h4M8 9v4M15 12h.01M18 10h.01" />
+                      <path d="M17.3 5H6.7a4 4 0 0 0-4 3.6l-.7 6.9a2.8 2.8 0 0 0 2.8 3c1 0 1.9-.5 2.4-1.3L8.5 15h7l1.3 2.2c.5.8 1.4 1.3 2.4 1.3a2.8 2.8 0 0 0 2.8-3l-.7-6.9a4 4 0 0 0-4-3.6Z" />
+                    </svg>
+                  </span>
+                  <span class="card-number">07 / 07</span>
+                </div>
+                <span class="esports-badge">Now open · 2 tournaments</span>
+                <h3 id="esports-title">Esports</h3>
+                <p>Assemble your squad and compete in SALATAGAN&rsquo;s mobile gaming tournaments. Pick your game to open its registration form.</p>
+              </div>
+
+              <div class="esports-games">
+                <a
+                  class="game-tile"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSeDuZLTXUl0f-gLW49xqYjEZwinH5loQ6GBK5KWncPo0q5arg/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Register for the MLBB Tournament team registration, opens in a new tab"
+                >
+                  <span class="game-monogram" aria-hidden="true">ML</span>
+                  <span class="game-meta">
+                    <span>MOBA</span>
+                    <span>Team entry</span>
+                  </span>
+                  <h4>Mobile Legends: Bang Bang</h4>
+                  <p class="game-form">MLBB Tournament &mdash; Team Registration Form</p>
+                  <span class="card-action">
+                    Register team
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M7 17 17 7M7 7h10v10" />
+                    </svg>
+                  </span>
+                </a>
+
+                <a
+                  class="game-tile"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSe3YeKBbJFhT8zkqmRt4-xLHEUSnE7ChV9pyCdEXjCTuPrXtQ/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Register for the CODM Tournament, opens in a new tab"
+                >
+                  <span class="game-monogram" aria-hidden="true">CM</span>
+                  <span class="game-meta">
+                    <span>Tactical FPS</span>
+                    <span>Tournament</span>
+                  </span>
+                  <h4>Call of Duty: Mobile</h4>
+                  <p class="game-form">CODM Tournament Registration Form</p>
+                  <span class="card-action">
+                    Register now
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M7 17 17 7M7 7h10v10" />
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
           </div>
 
           <p class="registration-note reveal-item">
@@ -1158,7 +1469,7 @@
         const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
         if (finePointer.matches && !reduceMotion.matches) {
-          document.querySelectorAll(".category-card").forEach((card) => {
+          document.querySelectorAll(".category-card, .game-tile").forEach((card) => {
             card.addEventListener("pointermove", (event) => {
               const bounds = card.getBoundingClientRect();
               const x = event.clientX - bounds.left;
