@@ -938,7 +938,7 @@
         position: relative;
         isolation: isolate;
         overflow: hidden;
-        padding-block: clamp(88px, 12vw, 160px) clamp(140px, 16vw, 220px);
+        padding-block: clamp(56px, 7vw, 88px) clamp(110px, 11vw, 140px);
         background:
           radial-gradient(1200px 600px at 85% -10%, rgba(227, 179, 65, 0.18), transparent 60%),
           radial-gradient(900px 500px at -10% 110%, rgba(31, 90, 68, 0.9), transparent 60%),
@@ -961,8 +961,8 @@
       .about-orb {
         position: absolute;
         z-index: -1;
-        width: 520px;
-        height: 520px;
+        width: 340px;
+        height: 340px;
         border-radius: 50%;
         background: radial-gradient(circle, rgba(227, 179, 65, 0.35), transparent 65%);
         filter: blur(20px);
@@ -1015,7 +1015,7 @@
         position: relative;
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-        gap: clamp(48px, 7vw, 110px);
+        gap: clamp(32px, 5vw, 72px);
         align-items: start;
       }
 
@@ -1025,7 +1025,7 @@
         display: flex;
         flex-wrap: wrap;
         margin: 0;
-        font-size: clamp(3rem, 8.4vw, 7.4rem);
+        font-size: clamp(2.2rem, 4.6vw, 3.8rem);
         font-weight: 700;
         letter-spacing: -0.05em;
         line-height: 0.95;
@@ -1068,7 +1068,7 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 10px;
-        margin: 28px 0 0;
+        margin: 16px 0 0;
         color: rgba(255, 255, 255, 0.72);
         font-size: 15px;
       }
@@ -1106,8 +1106,8 @@
 
       .about-island {
         position: relative;
-        width: min(100%, 360px);
-        margin-top: 48px;
+        width: min(100%, 220px);
+        margin-top: 28px;
         aspect-ratio: 1.4;
       }
 
@@ -1133,8 +1133,8 @@
       }
 
       .about-copy p {
-        margin: 0 0 1.4em;
-        font-size: clamp(1.05rem, 1.55vw, 1.3rem);
+        margin: 0 0 1.1em;
+        font-size: clamp(0.95rem, 1.1vw, 1.05rem);
         line-height: 1.7;
       }
 
@@ -1142,7 +1142,7 @@
         float: left;
         margin: 0.08em 0.12em 0 0;
         color: var(--accent);
-        font-size: 3.4em;
+        font-size: 2.6em;
         font-weight: 700;
         line-height: 0.8;
       }
@@ -1170,7 +1170,7 @@
 
       .pillar {
         position: relative;
-        padding: 22px 20px;
+        padding: 16px;
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.14);
         border-radius: var(--radius-sm);
@@ -1200,7 +1200,7 @@
         display: block;
         margin-bottom: 6px;
         color: var(--accent);
-        font-size: 26px;
+        font-size: 18px;
         line-height: 1;
       }
 
@@ -1210,7 +1210,7 @@
       .marquee {
         position: absolute;
         right: 0;
-        bottom: 96px;
+        bottom: 64px;
         left: 0;
         display: flex;
         overflow: hidden;
@@ -1223,7 +1223,7 @@
         display: flex;
         flex-shrink: 0;
         gap: 48px;
-        padding: 16px 24px;
+        padding: 10px 24px;
         animation: marquee 32s linear infinite;
         white-space: nowrap;
       }
@@ -1250,7 +1250,7 @@
         right: 0;
         bottom: -1px;
         left: 0;
-        height: 90px;
+        height: 56px;
         pointer-events: none;
       }
 
@@ -1264,12 +1264,12 @@
 
       @media (max-width: 960px) {
         .about-inner { grid-template-columns: 1fr; }
-        .about-island { width: min(100%, 300px); }
+        .about-island { width: min(100%, 180px); }
       }
 
       @media (max-width: 540px) {
         .pillars { grid-template-columns: 1fr; }
-        .marquee { bottom: 80px; }
+        .marquee { bottom: 52px; }
       }
 
       @media (max-width: 960px) {
