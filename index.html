@@ -1115,7 +1115,11 @@
         color: rgba(255, 255, 255, 0.9);
       }
 
+      .about-copy { max-width: 680px; margin-inline: auto; text-align: left; }
+
       .about-copy strong { color: var(--accent); font-weight: 600; }
+
+      .about + .categories-section { border-top: 0; }
 
       .js .about-copy .w {
         opacity: 0.18;
@@ -1133,7 +1137,8 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 14px;
-        margin-top: 12px;
+        max-width: 680px;
+        margin: 28px auto 0;
       }
 
       .pillar {
@@ -1186,7 +1191,7 @@
 
       .about-waves svg { position: absolute; bottom: 0; width: 200%; height: 100%; }
       .about-waves .wv1 { animation: wave-slide 16s linear infinite; }
-      .about-waves .wv2 { animation: wave-slide 11s linear infinite reverse; opacity: 0.5; }
+      .about-waves .wv2 { animation: wave-slide 11s linear infinite reverse; opacity: 0.35; }
 
       @keyframes wave-slide {
         to { transform: translateX(-50%); }
@@ -1484,7 +1489,7 @@
         </div>
 
         <div class="about-waves" aria-hidden="true">
-          <svg class="wv2" viewBox="0 0 2880 90" preserveAspectRatio="none"><path d="M0 40c240 40 480 40 720 0s480-40 720 0 480 40 720 0 480-40 720 0v50H0z" fill="#f4f1e8" /></svg>
+          <svg class="wv2" viewBox="0 0 2880 90" preserveAspectRatio="none"><path d="M0 40c240 40 480 40 720 0s480-40 720 0 480 40 720 0 480-40 720 0v50H0z" fill="#e3b341" /></svg>
           <svg class="wv1" viewBox="0 0 2880 90" preserveAspectRatio="none"><path d="M0 55c240-30 480-30 720 0s480 30 720 0 480-30 720 0 480 30 720 0v35H0z" fill="#f4f1e8" /></svg>
         </div>
       </section>
