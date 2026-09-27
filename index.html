@@ -933,6 +933,345 @@
         transition-delay: var(--reveal-delay, 0ms);
       }
 
+      /* ---------- About / Salatagan meaning ---------- */
+      .about {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        padding-block: clamp(88px, 12vw, 160px) clamp(140px, 16vw, 220px);
+        background:
+          radial-gradient(1200px 600px at 85% -10%, rgba(227, 179, 65, 0.18), transparent 60%),
+          radial-gradient(900px 500px at -10% 110%, rgba(31, 90, 68, 0.9), transparent 60%),
+          var(--forest);
+        color: var(--white);
+      }
+
+      .about::before {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 64px 64px;
+        content: "";
+        mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+      }
+
+      .about-orb {
+        position: absolute;
+        z-index: -1;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(227, 179, 65, 0.35), transparent 65%);
+        filter: blur(20px);
+        pointer-events: none;
+        animation: orb-drift 14s ease-in-out infinite alternate;
+      }
+
+      .about-orb.one { top: -120px; right: -80px; }
+      .about-orb.two {
+        bottom: 40px;
+        left: -160px;
+        background: radial-gradient(circle, rgba(94, 200, 160, 0.28), transparent 65%);
+        animation-duration: 18s;
+        animation-direction: alternate-reverse;
+      }
+
+      @keyframes orb-drift {
+        from { transform: translate(0, 0) scale(1); }
+        to { transform: translate(-60px, 50px) scale(1.15); }
+      }
+
+      .about-particles {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .about-particles i {
+        position: absolute;
+        bottom: -10px;
+        width: var(--s, 4px);
+        height: var(--s, 4px);
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 12px var(--accent);
+        opacity: 0;
+        animation: rise var(--d, 12s) linear infinite;
+        animation-delay: var(--delay, 0s);
+      }
+
+      @keyframes rise {
+        0% { opacity: 0; transform: translate(0, 0); }
+        10% { opacity: 0.9; }
+        90% { opacity: 0.6; }
+        100% { opacity: 0; transform: translate(var(--x, 30px), -110vh); }
+      }
+
+      .about-inner {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+        gap: clamp(48px, 7vw, 110px);
+        align-items: start;
+      }
+
+      .about .eyebrow { color: var(--accent); }
+
+      .about-word {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        font-size: clamp(3rem, 8.4vw, 7.4rem);
+        font-weight: 700;
+        letter-spacing: -0.05em;
+        line-height: 0.95;
+        perspective: 800px;
+      }
+
+      .about-word .ch {
+        display: inline-block;
+        background: linear-gradient(110deg, #fff 0%, #fff 40%, var(--accent) 50%, #fff 60%, #fff 100%);
+        background-size: 300% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shimmer 5s linear infinite;
+        animation-delay: calc(var(--i) * 80ms);
+      }
+
+      .js .about-word .ch {
+        opacity: 0;
+        transform: translateY(0.6em) rotateX(-90deg);
+        transform-origin: bottom;
+      }
+
+      .js .about.is-live .about-word .ch {
+        opacity: 1;
+        transform: none;
+        transition:
+          opacity 700ms var(--ease),
+          transform 900ms var(--ease);
+        transition-delay: calc(var(--i) * 60ms);
+      }
+
+      @keyframes shimmer {
+        from { background-position: 100% 0; }
+        to { background-position: -200% 0; }
+      }
+
+      .about-meaning {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin: 28px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 15px;
+      }
+
+      .about-meaning em {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .word-rotator {
+        position: relative;
+        display: inline-grid;
+        min-width: 9ch;
+        height: 1.6em;
+        overflow: hidden;
+        vertical-align: bottom;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .word-rotator span {
+        grid-area: 1 / 1;
+        animation: rotate-word 7.5s var(--ease) infinite;
+        opacity: 0;
+      }
+
+      .word-rotator span:nth-child(2) { animation-delay: 2.5s; }
+      .word-rotator span:nth-child(3) { animation-delay: 5s; }
+
+      @keyframes rotate-word {
+        0% { opacity: 0; transform: translateY(100%); }
+        6%, 30% { opacity: 1; transform: translateY(0); }
+        36%, 100% { opacity: 0; transform: translateY(-100%); }
+      }
+
+      .about-island {
+        position: relative;
+        width: min(100%, 360px);
+        margin-top: 48px;
+        aspect-ratio: 1.4;
+      }
+
+      .about-island svg { width: 100%; height: 100%; overflow: visible; }
+      .about-island .isle { animation: bob 6s ease-in-out infinite; transform-origin: center; }
+      .about-island .sun { animation: glow 4s ease-in-out infinite alternate; transform-origin: 250px 70px; }
+      .about-island .w1 { animation: wave-x 5s ease-in-out infinite alternate; }
+      .about-island .w2 { animation: wave-x 7s ease-in-out infinite alternate-reverse; }
+
+      @keyframes bob {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+      }
+
+      @keyframes glow {
+        from { transform: scale(1); opacity: 0.85; }
+        to { transform: scale(1.12); opacity: 1; }
+      }
+
+      @keyframes wave-x {
+        from { transform: translateX(-18px); }
+        to { transform: translateX(18px); }
+      }
+
+      .about-copy p {
+        margin: 0 0 1.4em;
+        font-size: clamp(1.05rem, 1.55vw, 1.3rem);
+        line-height: 1.7;
+      }
+
+      .about-copy p:first-child::first-letter {
+        float: left;
+        margin: 0.08em 0.12em 0 0;
+        color: var(--accent);
+        font-size: 3.4em;
+        font-weight: 700;
+        line-height: 0.8;
+      }
+
+      .about-copy strong { color: var(--accent); font-weight: 600; }
+
+      .js .about-copy .w {
+        opacity: 0.18;
+        transition: opacity 400ms ease, color 400ms ease, text-shadow 400ms ease;
+      }
+
+      .js .about-copy .w.on { opacity: 1; }
+
+      .js .about-copy .w.hot {
+        color: var(--accent);
+        text-shadow: 0 0 18px rgba(227, 179, 65, 0.6);
+      }
+
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 12px;
+      }
+
+      .pillar {
+        position: relative;
+        padding: 22px 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: var(--radius-sm);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(6px);
+        transform: perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+        transition: transform 300ms var(--ease), border-color 300ms ease, background 300ms ease;
+      }
+
+      .pillar::after {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(220px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(227, 179, 65, 0.22), transparent 60%);
+        content: "";
+        opacity: 0;
+        transition: opacity 300ms ease;
+      }
+
+      .js .pillar.reveal-item.is-visible {
+        transform: perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      }
+
+      .pillar:hover { border-color: rgba(227, 179, 65, 0.6); background: rgba(255, 255, 255, 0.08); }
+      .pillar:hover::after { opacity: 1; }
+
+      .pillar b {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+        font-size: 26px;
+        line-height: 1;
+      }
+
+      .pillar span { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; }
+      .pillar small { display: block; margin-top: 4px; color: rgba(255, 255, 255, 0.6); font-size: 12px; }
+
+      .marquee {
+        position: absolute;
+        right: 0;
+        bottom: 96px;
+        left: 0;
+        display: flex;
+        overflow: hidden;
+        border-block: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.12);
+        mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+      }
+
+      .marquee-track {
+        display: flex;
+        flex-shrink: 0;
+        gap: 48px;
+        padding: 16px 24px;
+        animation: marquee 32s linear infinite;
+        white-space: nowrap;
+      }
+
+      .marquee-track span {
+        display: inline-flex;
+        align-items: center;
+        gap: 48px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .marquee-track span::after { color: var(--accent); content: "✦"; }
+
+      @keyframes marquee {
+        to { transform: translateX(-100%); }
+      }
+
+      .about-waves {
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: 90px;
+        pointer-events: none;
+      }
+
+      .about-waves svg { position: absolute; bottom: 0; width: 200%; height: 100%; }
+      .about-waves .wv1 { animation: wave-slide 16s linear infinite; }
+      .about-waves .wv2 { animation: wave-slide 11s linear infinite reverse; opacity: 0.5; }
+
+      @keyframes wave-slide {
+        to { transform: translateX(-50%); }
+      }
+
+      @media (max-width: 960px) {
+        .about-inner { grid-template-columns: 1fr; }
+        .about-island { width: min(100%, 300px); }
+      }
+
+      @media (max-width: 540px) {
+        .pillars { grid-template-columns: 1fr; }
+        .marquee { bottom: 80px; }
+      }
+
       @media (max-width: 960px) {
         .hero {
           min-height: auto;
@@ -1101,6 +1440,22 @@
         .event-poster {
           transform: none;
         }
+
+        .js .about-word .ch,
+        .js .about-copy .w {
+          opacity: 1;
+          transform: none;
+        }
+
+        .about-particles,
+        .word-rotator span:not(:first-child) {
+          display: none;
+        }
+
+        .word-rotator span:first-child {
+          opacity: 1;
+          animation: none;
+        }
       }
     </style>
   </head>
@@ -1135,7 +1490,7 @@
             Find your field.<br /><span>Take your place.</span>
           </h1>
           <p class="hero-intro intro-item" style="--intro-delay: 260ms">
-            Your direct route to SALATAGAN registration. Choose a category below and continue to its official form.
+            <strong>SALATAGAN</strong> — steadfast, firm, resilient. Like an island that endures waves and storms. Your direct route to registration: choose a category below and continue to its official form.
           </p>
           <div class="hero-actions intro-item" style="--intro-delay: 340ms">
             <a class="primary-button" href="#categories">
@@ -1159,6 +1514,72 @@
               <span>Twenty twenty-six</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="about" class="about" aria-labelledby="about-title">
+        <span class="about-orb one" aria-hidden="true"></span>
+        <span class="about-orb two" aria-hidden="true"></span>
+        <div class="about-particles" aria-hidden="true"></div>
+
+        <div class="site-shell about-inner">
+          <div>
+            <p class="eyebrow reveal-item">The meaning behind the name</p>
+            <h2 id="about-title" class="about-word" aria-label="Salatagan">SALATAGAN</h2>
+            <p class="about-meaning reveal-item" style="--reveal-delay: 120ms">
+              <em>Tagalog</em> · means
+              <span class="word-rotator" aria-hidden="true"><span>steadfast</span><span>firm</span><span>resilient</span></span>
+              <span class="sr-only">steadfast, firm, resilient</span>
+            </p>
+
+            <div class="about-island reveal-item" style="--reveal-delay: 200ms" aria-hidden="true">
+              <svg viewBox="0 0 320 220" fill="none">
+                <circle class="sun" cx="250" cy="70" r="30" fill="#e3b341" />
+                <g class="isle">
+                  <path d="M60 160c30-50 70-70 110-68s70 30 90 68z" fill="#1f5a44" />
+                  <path d="M120 120c20-26 44-34 66-30" stroke="#5ec8a0" stroke-width="3" stroke-linecap="round" />
+                  <path d="M150 96V50" stroke="#f4f1e8" stroke-width="4" stroke-linecap="round" />
+                  <path d="M150 52c-22-6-36 2-44 14M150 52c18-12 36-10 46 0M150 52c-10-16-26-20-38-16M150 52c8-18 26-22 38-14" stroke="#5ec8a0" stroke-width="5" stroke-linecap="round" />
+                </g>
+                <path class="w1" d="M-20 170c30 0 30-12 60-12s30 12 60 12 30-12 60-12 30 12 60 12 30-12 60-12 30 12 60 12" stroke="#e3b341" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+                <path class="w2" d="M-20 192c30 0 30-12 60-12s30 12 60 12 30-12 60-12 30 12 60 12 30-12 60-12 30 12 60 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.35" />
+              </svg>
+            </div>
+          </div>
+
+          <div>
+            <div class="about-copy" data-words>
+              <p>
+                <strong>SALATAGAN</strong> is a Tagalog term that means steadfast, firm, or resilient. It describes someone or something that stands strong and unwavering, much like an island that endures waves and storms. In our concept of <strong>Kapwa Island</strong>, Salatagan symbolizes the enduring strength of Filipino identity, memory, and tradition.
+              </p>
+              <p>
+                As the official brand of the University's Student Week Celebration, SALATAGAN represents more than a series of competitions — it is a holistic platform for student growth and excellence. By integrating literary arts, cultural, and sports events, the celebration nurtures intellectual competence, artistic creativity, physical well-being, leadership, teamwork, discipline, and sportsmanship. It provides meaningful opportunities for students to discover and develop their talents while fostering a strong sense of identity, camaraderie, and institutional pride.
+              </p>
+              <p>
+                Anchored in the University's commitment to outcomes-based and holistic education, SALATAGAN cultivates graduates who are resilient, innovative, culturally grounded, and socially responsible. It celebrates the balanced development of every <strong>MarSUan</strong> student, recognizing that true excellence is achieved not only through academic success but also through character formation, creative expression, physical fitness, and active engagement in the university community.
+              </p>
+            </div>
+
+            <div class="pillars">
+              <div class="pillar reveal-item"><b>01</b><span>Literary Arts</span><small>Mind &amp; creativity</small></div>
+              <div class="pillar reveal-item" style="--reveal-delay: 80ms"><b>02</b><span>Culture</span><small>Identity &amp; tradition</small></div>
+              <div class="pillar reveal-item" style="--reveal-delay: 160ms"><b>03</b><span>Sports</span><small>Discipline &amp; teamwork</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>Resilient</span><span>Innovative</span><span>Culturally grounded</span><span>Socially responsible</span><span>Kapwa Island</span><span>MarSUan pride</span>
+          </div>
+          <div class="marquee-track">
+            <span>Resilient</span><span>Innovative</span><span>Culturally grounded</span><span>Socially responsible</span><span>Kapwa Island</span><span>MarSUan pride</span>
+          </div>
+        </div>
+
+        <div class="about-waves" aria-hidden="true">
+          <svg class="wv2" viewBox="0 0 2880 90" preserveAspectRatio="none"><path d="M0 40c240 40 480 40 720 0s480-40 720 0 480 40 720 0 480-40 720 0v50H0z" fill="#f4f1e8" /></svg>
+          <svg class="wv1" viewBox="0 0 2880 90" preserveAspectRatio="none"><path d="M0 55c240-30 480-30 720 0s480 30 720 0 480-30 720 0 480 30 720 0v35H0z" fill="#f4f1e8" /></svg>
         </div>
       </section>
 
@@ -1478,6 +1899,106 @@
               card.style.setProperty("--spot-y", `${y}px`);
             });
           });
+        }
+
+        // ---- About section effects ----
+        const about = document.querySelector(".about");
+
+        if (about) {
+          const word = about.querySelector(".about-word");
+          word.innerHTML = [...word.textContent.trim()]
+            .map((ch, i) => `<span class="ch" aria-hidden="true" style="--i:${i}">${ch}</span>`)
+            .join("");
+
+          if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+            about.classList.add("is-live");
+          } else {
+            new IntersectionObserver(
+              (entries, obs) => {
+                if (!entries[0].isIntersecting) return;
+                about.classList.add("is-live");
+                obs.disconnect();
+              },
+              { threshold: 0.25 },
+            ).observe(about);
+
+            const particles = about.querySelector(".about-particles");
+            for (let i = 0; i < 26; i++) {
+              const p = document.createElement("i");
+              p.style.left = `${Math.random() * 100}%`;
+              p.style.setProperty("--s", `${2 + Math.random() * 4}px`);
+              p.style.setProperty("--d", `${9 + Math.random() * 10}s`);
+              p.style.setProperty("--delay", `${-Math.random() * 18}s`);
+              p.style.setProperty("--x", `${Math.random() * 120 - 60}px`);
+              particles.appendChild(p);
+            }
+          }
+
+          // split copy into words, keep inline tags
+          const hot = /^(steadfast|firm|resilient|island|identity|excellence|holistic|pride|innovative|kapwa|marsuan|salatagan)/i;
+          const copy = about.querySelector("[data-words]");
+          const walker = document.createTreeWalker(copy, NodeFilter.SHOW_TEXT);
+          const nodes = [];
+          while (walker.nextNode()) nodes.push(walker.currentNode);
+          nodes.forEach((node) => {
+            const frag = document.createDocumentFragment();
+            node.textContent.split(/(\s+)/).forEach((part) => {
+              if (!part.trim()) return frag.appendChild(document.createTextNode(part));
+              const s = document.createElement("span");
+              s.className = "w";
+              if (hot.test(part)) s.dataset.hot = "";
+              s.textContent = part;
+              frag.appendChild(s);
+            });
+            node.replaceWith(frag);
+          });
+
+          const words = [...copy.querySelectorAll(".w")];
+
+          if (reduceMotion.matches) {
+            words.forEach((w) => w.classList.add("on"));
+          } else {
+            let ticking = false;
+            const paint = () => {
+              ticking = false;
+              const line = window.innerHeight * 0.78;
+              words.forEach((w) => {
+                const on = w.getBoundingClientRect().top < line;
+                w.classList.toggle("on", on);
+                if (w.dataset.hot !== undefined) w.classList.toggle("hot", on);
+              });
+            };
+            window.addEventListener(
+              "scroll",
+              () => {
+                if (!ticking) {
+                  ticking = true;
+                  requestAnimationFrame(paint);
+                }
+              },
+              { passive: true },
+            );
+            window.addEventListener("resize", paint);
+            paint();
+          }
+
+          if (finePointer.matches && !reduceMotion.matches) {
+            about.querySelectorAll(".pillar").forEach((card) => {
+              card.addEventListener("pointermove", (e) => {
+                const b = card.getBoundingClientRect();
+                const x = e.clientX - b.left;
+                const y = e.clientY - b.top;
+                card.style.setProperty("--spot-x", `${x}px`);
+                card.style.setProperty("--spot-y", `${y}px`);
+                card.style.setProperty("--ry", `${(x / b.width - 0.5) * 14}deg`);
+                card.style.setProperty("--rx", `${(0.5 - y / b.height) * 14}deg`);
+              });
+              card.addEventListener("pointerleave", () => {
+                card.style.setProperty("--rx", "0deg");
+                card.style.setProperty("--ry", "0deg");
+              });
+            });
+          }
         }
 
         if (document.readyState === "loading") {
